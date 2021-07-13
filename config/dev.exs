@@ -2,10 +2,10 @@ use Mix.Config
 
 # Configure your database
 config :phx_app, PhxApp.Repo,
-  username: "phx",
-  password: "postgres",
-  database: "phx_app_dev",
-  hostname: "localhost",
+  username: System.get_env("DB_USERNAME") || "postgres",
+  password: System.get_env("DB_PASSWORD") || "postgres",
+  database: System.get_env("DB_NAME") || "phx_app_dev",
+  hostname: System.get_env("DB_HOSTNAME") || "localhost",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 

@@ -1,8 +1,23 @@
 version: "3"
 
 services:
+  phx_web:
+    build: .
+    container_name: phx_web
+    ports:
+      - "4000:4000"
+    command: mix phx.server
+    environment:
+      - MIX_ENV=dev
+      - PORT=4000
+      - DB_USERNAME=phx
+      - DB_PASSWORD=postgres
+      - DB_HOSTNAME=phx_db
+    volumes:
+      - .:/app
+
   phx_db:
-    image: postgres
+    image: postgres:13.3
     container_name: phx_db
     volumes:
       - ./tmp/db:/var/lib/postgresql/data
