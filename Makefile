@@ -1,3 +1,7 @@
+init:
+	@make build
+	@make up
+	@make db-create
 build:
 	docker compose build
 up:
