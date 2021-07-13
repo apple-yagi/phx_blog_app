@@ -10,5 +10,7 @@ down:
 	docker compose down
 db-create:
 	docker exec phx_web mix ecto.create
+db-migrate:
+	docker exec phx_web mix ecto.migrate
 iex:
 	docker exec phx_web iex -S mix phx.server
