@@ -1,7 +1,6 @@
 <h1>Show User</h1>
 
 <ul>
-
   <li>
     <strong>Name:</strong>
     <%= @user.name %>
@@ -11,12 +10,6 @@
     <strong>Email:</strong>
     <%= @user.email %>
   </li>
-
-  <li>
-    <strong>Password:</strong>
-    <%= @user.password %>
-  </li>
-
 </ul>
 
 <span><%= link "Edit", to: Routes.user_path(@conn, :edit, @user) %></span>

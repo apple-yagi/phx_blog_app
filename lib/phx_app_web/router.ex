@@ -13,11 +13,29 @@ defmodule PhxAppWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :auth do
+    plug PhxApp.Accounts.Pipeline
+  end
+
+  pipeline :ensure_auth do
+    plug Guardian.Plug.EnsureAuthenticated
+  end
+
   scope "/", PhxAppWeb do
-    pipe_through :browser
+    pipe_through [:browser, :auth]
 
     get "/", PageController, :index
-    resources "/users", UserController
+    get "/signin", UserController, :new
+    post "/signin", UserController, :create
+    get "/login", SessionController, :new
+    post "/login", SessionController, :create
+    delete "/logout", SessionController, :delete
+  end
+
+  scope "/", PhxAppWeb do
+    pipe_through [:browser, :auth, :ensure_auth]
+
+    resources "/users", UserController, except: [:new, :create]
     resources "/articles", ArticleController
   end
 

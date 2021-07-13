@@ -18,6 +18,10 @@ config :phx_app, PhxAppWeb.Endpoint,
   pubsub_server: PhxApp.PubSub,
   live_view: [signing_salt: "jIjMtTz+"]
 
+config :phx_app, PhxApp.Accounts.Guardian,
+  issuer: "phx_app",
+  secret_key: System.get_env("GUARDIAN_KEY")
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",

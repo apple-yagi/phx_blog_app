@@ -13,6 +13,7 @@ services:
       - DB_USERNAME=phx
       - DB_PASSWORD=postgres
       - DB_HOSTNAME=phx_db
+      - GUARDIAN_KEY=30uF+c97L/N4JrRWU9KwCfAbAO7LB4tI3dgbAA2ZwhT5NNN4i/RJpzVBrktuIw/l
     volumes:
       - .:/app
 
