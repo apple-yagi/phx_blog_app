@@ -11,6 +11,12 @@ defmodule PhxAppWeb.Api.V1.UserView do
   end
 
   def render("user.json", %{user: user}) do
-    %{id: user.id, name: user.name, email: user.email}
+    %{
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      createdAt: user.inserted_at,
+      updatedAt: user.updated_at
+    }
   end
 end
