@@ -1,4 +1,4 @@
-defmodule PhxAppWeb.Api.ChangesetView do
+defmodule PhxAppWeb.Api.Error.ChangesetView do
   use PhxAppWeb, :view
 
   @doc """

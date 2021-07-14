@@ -1,4 +1,4 @@
-defmodule PhxAppWeb.Api.ErrorView do
+defmodule PhxAppWeb.Api.Error.ErrorView do
   use PhxAppWeb, :view
 
   # If you want to customize a particular status code

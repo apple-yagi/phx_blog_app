@@ -4,7 +4,7 @@ defmodule PhxAppWeb.Api.V1.UserController do
   alias PhxApp.Accounts
   alias PhxApp.Accounts.User
 
-  action_fallback PhxAppWeb.Api.FallbackController
+  action_fallback PhxAppWeb.Api.Error.FallbackController
 
   def index(conn, _params) do
     users = Accounts.list_users()
