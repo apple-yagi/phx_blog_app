@@ -17,16 +17,9 @@
       <section class="container">
         <nav role="navigation">
           <ul>
-            <%= if current_user(@conn) do %>
+            <%= if function_exported?(Routes, :live_dashboard_path, 2) do %>
               <li>
-                <%= link "Logout", to: Routes.session_path(@conn, :delete),
-              method: :delete %>
-              </li>
-            <% end %> <%= if function_exported?(Routes, :live_dashboard_path, 2)
-            do %>
-              <li>
-                <%= link "LiveDashboard", to: Routes.live_dashboard_path(@conn,
-              :home) %>
+                <%= link "LiveDashboard", to: Routes.live_dashboard_path(@conn, :home) %>
               </li>
             <% end %>
           </ul>

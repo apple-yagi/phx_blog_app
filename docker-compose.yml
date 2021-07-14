@@ -7,13 +7,8 @@ services:
     ports:
       - "4000:4000"
     command: mix phx.server
-    environment:
-      - MIX_ENV=dev
-      - PORT=4000
-      - DB_USERNAME=phx
-      - DB_PASSWORD=postgres
-      - DB_HOSTNAME=phx_db
-      - GUARDIAN_KEY=30uF+c97L/N4JrRWU9KwCfAbAO7LB4tI3dgbAA2ZwhT5NNN4i/RJpzVBrktuIw/l
+    env_file: 
+      - .env
     volumes:
       - .:/app
 

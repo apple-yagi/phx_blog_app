@@ -22,30 +22,32 @@ defmodule PhxAppWeb.Router do
   end
 
   scope "/", PhxAppWeb do
-    pipe_through [:browser, :auth]
+    pipe_through :browser
 
     get "/", PageController, :index
-    get "/login", SessionController, :new
-    post "/login", SessionController, :create
-    delete "/logout", SessionController, :delete
   end
 
   scope "/", PhxAppWeb do
-    pipe_through [:browser, :auth, :ensure_auth]
+    pipe_through :browser
 
     resources "/articles", ArticleController
   end
 
   scope "/api/v1", PhxAppWeb.Api.V1 do
-    pipe_through :api
+    pipe_through [:api, :auth]
 
-    resources "/users", UserController, except: [:new, :edit]
+    resources "/users", UserController, only: [:index, :show, :create]
+
+    pipe_through :ensure_auth
+
+    resources "/users", UserController, only: [:update, :delete]
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", PhxAppWeb do
-  #   pipe_through :api
-  # end
+  scope "/auth", PhxAppWeb.Auth do
+    pipe_through :api
+
+    post "/sign_in", JwtController, :sign_in
+  end
 
   # Enables LiveDashboard only for development
   #

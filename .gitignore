@@ -39,3 +39,6 @@ tmp/db/*
 # IDE
 .vscode
 .elixir_ls
+
+# Enviroment
+.env
