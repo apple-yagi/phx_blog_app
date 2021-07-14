@@ -25,8 +25,6 @@ defmodule PhxAppWeb.Router do
     pipe_through [:browser, :auth]
 
     get "/", PageController, :index
-    get "/signin", UserController, :new
-    post "/signin", UserController, :create
     get "/login", SessionController, :new
     post "/login", SessionController, :create
     delete "/logout", SessionController, :delete
@@ -35,8 +33,13 @@ defmodule PhxAppWeb.Router do
   scope "/", PhxAppWeb do
     pipe_through [:browser, :auth, :ensure_auth]
 
-    resources "/users", UserController, except: [:new, :create]
     resources "/articles", ArticleController
+  end
+
+  scope "/api/v1", PhxAppWeb.Api.V1 do
+    pipe_through :api
+
+    resources "/users", UserController, except: [:new, :edit]
   end
 
   # Other scopes may use custom stacks.

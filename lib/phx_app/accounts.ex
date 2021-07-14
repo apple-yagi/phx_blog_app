@@ -30,13 +30,20 @@ defmodule PhxApp.Accounts do
   ## Examples
 
       iex> get_user!(123)
-      %User{}
+      {:ok, %User{}}
 
       iex> get_user!(456)
-      ** (Ecto.NoResultsError)
+      {:error, :not_found}
 
   """
-  def get_user!(id), do: Repo.get!(User, id)
+  def get_user!(id) do
+    try do
+      user = Repo.get!(User, id)
+      {:ok, user}
+    rescue
+      _e in Ecto.NoResultsError -> {:error, :not_found}
+    end
+  end
 
   @doc """
   Creates a user.
@@ -105,6 +112,7 @@ defmodule PhxApp.Accounts do
 
   def authenticate_user(email, plain_text_password) do
     query = from u in User, where: u.email == ^email
+
     Repo.one(query)
     |> check_password(plain_text_password)
   end
