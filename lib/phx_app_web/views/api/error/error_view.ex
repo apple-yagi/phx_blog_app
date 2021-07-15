@@ -12,7 +12,8 @@ defmodule PhxAppWeb.Api.Error.ErrorView do
   # "Not Found".
   def template_not_found(_template, _assigns) do
     %{
-      statusCode: 404
+      statusCode: 404,
+      message: "Not found😳"
     }
   end
 end
