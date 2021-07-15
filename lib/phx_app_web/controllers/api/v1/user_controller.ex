@@ -30,7 +30,7 @@ defmodule PhxAppWeb.Api.V1.UserController do
 
   def update(conn, %{"id" => id, "user" => user_params}) do
     with {:ok, user} <- Accounts.get_user!(id),
-         {:ok, %User{} = user} <- Accounts.update_user(user, user_params) do
+         {:ok, %User{} = user} <- Accounts.update_user(user, update_params(user_params)) do
       render(conn, "show.json", user: user)
     end
   end
@@ -40,5 +40,10 @@ defmodule PhxAppWeb.Api.V1.UserController do
          {:ok, %User{}} <- Accounts.delete_user(user) do
       send_resp(conn, :no_content, "")
     end
+  end
+
+  def update_params(user_params) do
+    filter_list = ["password"]
+    Map.drop(user_params, filter_list)
   end
 end
