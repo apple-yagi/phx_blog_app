@@ -18,19 +18,7 @@ config :phx_app, PhxAppWeb.Endpoint,
   pubsub_server: PhxApp.PubSub,
   live_view: [signing_salt: "jIjMtTz+"]
 
-config :phx_app, PhxApp.Accounts.Guardian,
-  issuer: "phx_app",
-  secret_key: System.get_env("GUARDIAN_KEY")
-
-# Configures Elixir's Logger
-config :logger, :console,
-  format: "$time $metadata[$level] $message\n",
-  metadata: [:request_id]
-
-# Use Jason for JSON parsing in Phoenix
-config :phoenix, :json_library, Jason
-
-config :guardian, Guardian,
+config :phx_app, PhxApp.Auth.Guardian,
   # optional
   allowed_algos: ["HS512"],
   # optional
@@ -41,6 +29,14 @@ config :guardian, Guardian,
   # optional
   verify_issuer: true,
   secret_key: System.get_env("GUARDIAN_KEY")
+
+# Configures Elixir's Logger
+config :logger, :console,
+  format: "$time $metadata[$level] $message\n",
+  metadata: [:request_id]
+
+# Use Jason for JSON parsing in Phoenix
+config :phoenix, :json_library, Jason
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

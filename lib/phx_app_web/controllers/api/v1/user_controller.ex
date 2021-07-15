@@ -6,6 +6,10 @@ defmodule PhxAppWeb.Api.V1.UserController do
 
   action_fallback PhxAppWeb.Api.Error.FallbackController
 
+  def action(conn, _) do
+    apply(__MODULE__, action_name(conn), [conn, conn.params, elem(conn.assigns.current_user, 1)])
+  end
+
   def index(conn, _params) do
     users = Accounts.list_users()
     render(conn, "index.json", users: users)
@@ -28,15 +32,17 @@ defmodule PhxAppWeb.Api.V1.UserController do
     end
   end
 
-  def update(conn, %{"id" => id, "user" => user_params}) do
+  def update(conn, %{"id" => id, "user" => user_params}, current_user) do
     with {:ok, user} <- Accounts.get_user!(id),
+         {:ok, _user} <- Accounts.check_policy(user, current_user),
          {:ok, %User{} = user} <- Accounts.update_user(user, update_params(user_params)) do
       render(conn, "show.json", user: user)
     end
   end
 
-  def delete(conn, %{"id" => id}) do
+  def delete(conn, %{"id" => id}, current_user) do
     with {:ok, user} <- Accounts.get_user!(id),
+         {:ok, _user} <- Accounts.check_policy(user, current_user),
          {:ok, %User{}} <- Accounts.delete_user(user) do
       send_resp(conn, :no_content, "")
     end

@@ -125,4 +125,11 @@ defmodule PhxApp.Accounts do
       false -> {:error, "Incorrect username or password"}
     end
   end
+
+  def check_policy(user, current_user) do
+    case user.id == current_user.id do
+      true -> {:ok, user}
+      false -> {:error, :not_found}
+    end
+  end
 end

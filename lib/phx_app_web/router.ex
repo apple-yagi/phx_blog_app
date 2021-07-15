@@ -14,7 +14,7 @@ defmodule PhxAppWeb.Router do
   end
 
   pipeline :auth do
-    plug PhxApp.Accounts.Pipeline
+    plug PhxApp.Auth.Pipeline
   end
 
   pipeline :ensure_auth do
@@ -34,11 +34,11 @@ defmodule PhxAppWeb.Router do
   end
 
   scope "/api/v1", PhxAppWeb.Api.V1 do
-    pipe_through [:api, :auth]
+    pipe_through :api
 
     resources "/users", UserController, only: [:index, :show, :create]
 
-    pipe_through :ensure_auth
+    pipe_through [:auth, :ensure_auth]
 
     resources "/users", UserController, only: [:update, :delete]
   end

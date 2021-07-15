@@ -1,4 +1,4 @@
-defmodule PhxApp.Accounts.ErrorHandler do
+defmodule PhxApp.Auth.ErrorHandler do
   import Plug.Conn
 
   def auth_error(conn, {_type, _reason}, _opts) do

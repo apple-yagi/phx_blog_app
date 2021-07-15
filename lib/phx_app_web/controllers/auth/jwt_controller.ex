@@ -1,7 +1,7 @@
 defmodule PhxAppWeb.Auth.JwtController do
   use PhxAppWeb, :controller
   alias PhxApp.Accounts
-  alias PhxApp.Accounts.Guardian
+  alias PhxApp.Auth.Guardian
 
   def sign_in(conn, %{"user" => %{"email" => email, "password" => password}}) do
     case Accounts.authenticate_user(email, password) do
