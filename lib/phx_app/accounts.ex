@@ -137,9 +137,13 @@ defmodule PhxApp.Accounts do
   end
 
   def check_policy(user, current_user) do
-    case user.id == current_user.id do
-      true -> {:ok, nil}
-      false -> {:error, :not_found}
+    if current_user == :not_found do
+      {:error, :not_found}
+    else
+      case user.id == current_user.id do
+        true -> :ok
+        false -> {:error, :not_found}
+      end
     end
   end
 end

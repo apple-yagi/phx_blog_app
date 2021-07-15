@@ -38,14 +38,12 @@ defmodule PhxAppWeb.Api.V1.UserController do
   def show(conn, %{"id" => id}, _) do
     with {:ok, user} <- Accounts.get_user(id) do
       render(conn, "show.json", user: user)
-    else
-      err -> err
     end
   end
 
   def update(conn, %{"id" => id, "user" => user_params}, current_user) do
     with {:ok, user} <- Accounts.get_user(id),
-         {:ok, _} <- Accounts.check_policy(user, current_user),
+         :ok <- Accounts.check_policy(user, current_user),
          {:ok, %User{} = user} <- Accounts.update_user(user, update_params(user_params)) do
       render(conn, "show.json", user: user)
     end
@@ -53,7 +51,7 @@ defmodule PhxAppWeb.Api.V1.UserController do
 
   def delete(conn, %{"id" => id}, current_user) do
     with {:ok, user} <- Accounts.get_user(id),
-         {:ok, _} <- Accounts.check_policy(user, current_user),
+         :ok <- Accounts.check_policy(user, current_user),
          {:ok, %User{}} <- Accounts.delete_user(user) do
       send_resp(conn, :no_content, "")
     end
