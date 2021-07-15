@@ -19,3 +19,7 @@ deps-get:
 	docker exec phx_web mix deps.get
 iex:
 	docker exec phx_web iex -S mix phx.server
+phx_web:
+	docker exec -it phx_web bash
+phx_db:
+	docker exec -it phx_db bash -c "psql -U phx"
