@@ -9,7 +9,7 @@ defmodule PhxApp.Auth.Guardian do
   def resource_from_claims(claims) do
     user =
       claims["sub"]
-      |> Accounts.get_user!()
+      |> Accounts.get_user()
 
     {:ok, user}
     # If something goes wrong here return {:error, reason}

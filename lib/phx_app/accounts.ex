@@ -25,25 +25,35 @@ defmodule PhxApp.Accounts do
   @doc """
   Gets a single user.
 
-  Raises `Ecto.NoResultsError` if the User does not exist.
-
   ## Examples
 
-      iex> get_user!(123)
+      iex> get_user(123)
       {:ok, %User{}}
 
-      iex> get_user!(456)
+      iex> get_user(456)
       {:error, :not_found}
 
   """
-  def get_user!(id) do
+  def get_user(id) do
     try do
       user = Repo.get!(User, id)
       {:ok, user}
     rescue
       _e in Ecto.NoResultsError -> {:error, :not_found}
+      _e -> {:error, :internal_server_error}
     end
   end
+
+  @doc """
+  Gets a single user.
+  Raises `Ecto.NoResultsError` if the User does not exist.
+  ## Examples
+      iex> get_user!(123)
+      %User{}
+      iex> get_user!(456)
+      ** (Ecto.NoResultsError)
+  """
+  def get_user!(id), do: Repo.get!(User, id)
 
   @doc """
   Creates a user.
@@ -128,7 +138,7 @@ defmodule PhxApp.Accounts do
 
   def check_policy(user, current_user) do
     case user.id == current_user.id do
-      true -> {:ok, user}
+      true -> {:ok, nil}
       false -> {:error, :not_found}
     end
   end

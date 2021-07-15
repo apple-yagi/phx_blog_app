@@ -7,7 +7,11 @@ defmodule PhxApp.AccountsTest do
     alias PhxApp.Accounts.User
 
     @valid_attrs %{email: "some email", name: "some name", password: "some password"}
-    @update_attrs %{email: "some updated email", name: "some updated name", password: "some updated password"}
+    @update_attrs %{
+      email: "some updated email",
+      name: "some updated name",
+      password: "some updated password"
+    }
     @invalid_attrs %{email: nil, name: nil, password: nil}
 
     def user_fixture(attrs \\ %{}) do
@@ -24,9 +28,9 @@ defmodule PhxApp.AccountsTest do
       assert Accounts.list_users() == [user]
     end
 
-    test "get_user!/1 returns the user with given id" do
+    test "get_user/1 returns the user with given id" do
       user = user_fixture()
-      assert Accounts.get_user!(user.id) == user
+      assert Accounts.get_user(user.id) == user
     end
 
     test "create_user/1 with valid data creates a user" do
@@ -51,13 +55,13 @@ defmodule PhxApp.AccountsTest do
     test "update_user/2 with invalid data returns error changeset" do
       user = user_fixture()
       assert {:error, %Ecto.Changeset{}} = Accounts.update_user(user, @invalid_attrs)
-      assert user == Accounts.get_user!(user.id)
+      assert user == Accounts.get_user(user.id)
     end
 
     test "delete_user/1 deletes the user" do
       user = user_fixture()
       assert {:ok, %User{}} = Accounts.delete_user(user)
-      assert_raise Ecto.NoResultsError, fn -> Accounts.get_user!(user.id) end
+      assert_raise Ecto.NoResultsError, fn -> Accounts.get_user(user.id) end
     end
 
     test "change_user/1 returns a user changeset" do
