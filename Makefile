@@ -29,6 +29,9 @@ deps-reget:
 	rm -r deps _build .elixir_ls
 	@make deps-get
 	@make compile
+tests:
+	docker compose run phx_web mix test
+	docker container prune -f
 phx_web:
 	docker exec -it phx_web bash
 phx_db:
