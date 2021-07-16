@@ -2,7 +2,6 @@ defmodule PhxApp.Accounts.User do
   use Ecto.Schema
   import Ecto.Changeset
   alias PhxApp.Blog.Article
-  alias Comeonin.Bcrypt
 
   schema "users" do
     field(:email, :string)
@@ -14,6 +13,14 @@ defmodule PhxApp.Accounts.User do
   end
 
   @doc false
+  @spec changeset(
+          {map, map}
+          | %{
+              :__struct__ => atom | %{:__changeset__ => map, optional(any) => any},
+              optional(atom) => any
+            },
+          :invalid | %{optional(:__struct__) => none, optional(atom | binary) => any}
+        ) :: Ecto.Changeset.t()
   def changeset(user, attrs) do
     user
     |> cast(attrs, [:name, :email, :password])
@@ -25,7 +32,7 @@ defmodule PhxApp.Accounts.User do
   end
 
   defp put_pass_hash(%Ecto.Changeset{valid?: true, changes: %{password: password}} = changeset) do
-    change(changeset, password: Bcrypt.hashpwsalt(password))
+    change(changeset, password: Bcrypt.hash_pwd_salt(password))
   end
 
   defp put_pass_hash(changeset), do: changeset

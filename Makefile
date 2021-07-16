@@ -11,14 +11,24 @@ down:
 restart:
 	docker compose down
 	docker compose up -d
+up-db:
+	docker compose up -d phx_db
 db-create:
 	docker exec phx_web mix ecto.create
 db-migrate:
 	docker exec phx_web mix ecto.migrate
 deps-get:
-	docker exec phx_web mix deps.get
+	docker compose run phx_web mix deps.get
+compile:
+	docker compose run phx_web mix deps.compile
+npm:
+	docker compose run phx_web -c "cd assets && npm i"
 iex:
 	docker exec phx_web iex -S mix phx.server
+deps-reget:
+	rm -r deps _build .elixir_ls
+	@make deps-get
+	@make compile
 phx_web:
 	docker exec -it phx_web bash
 phx_db:

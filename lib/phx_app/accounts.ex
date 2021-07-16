@@ -7,7 +7,6 @@ defmodule PhxApp.Accounts do
   alias PhxApp.Repo
 
   alias PhxApp.Accounts.User
-  alias Comeonin.Bcrypt
 
   @doc """
   Returns the list of users.
@@ -130,7 +129,7 @@ defmodule PhxApp.Accounts do
   defp check_password(nil, _), do: {:error, "Incorrect username or password"}
 
   defp check_password(user, plain_text_password) do
-    case Bcrypt.checkpw(plain_text_password, user.password) do
+    case Bcrypt.verify_pass(plain_text_password, user.password) do
       true -> {:ok, user}
       false -> {:error, "Incorrect username or password"}
     end

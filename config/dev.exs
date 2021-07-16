@@ -2,7 +2,7 @@ use Mix.Config
 
 # Configure your database
 config :phx_app, PhxApp.Repo,
-  username: System.get_env("DB_USERNAME") || "postgres",
+  username: System.get_env("DB_USERNAME") || "phx",
   password: System.get_env("DB_PASSWORD") || "postgres",
   database: System.get_env("DB_NAME") || "phx_app_dev",
   hostname: System.get_env("DB_HOSTNAME") || "localhost",
