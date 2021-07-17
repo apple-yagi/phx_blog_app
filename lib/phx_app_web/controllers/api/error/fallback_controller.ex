@@ -23,4 +23,11 @@ defmodule PhxAppWeb.Api.Error.FallbackController do
     |> put_view(ErrorView)
     |> render(:"404")
   end
+
+  def call(conn, {:error, :internal_server_error}) do
+    conn
+    |> put_status(:internal_server_error)
+    |> put_view(ErrorView)
+    |> render(:"500")
+  end
 end

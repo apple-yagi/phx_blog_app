@@ -16,4 +16,11 @@ defmodule PhxAppWeb.Api.Error.ErrorView do
       message: "Not found😳"
     }
   end
+
+  def template_internal_server_error(_template, _assigns) do
+    %{
+      statusCode: 500,
+      message: "Internal server error😇"
+    }
+  end
 end
