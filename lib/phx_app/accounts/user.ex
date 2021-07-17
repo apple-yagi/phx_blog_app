@@ -1,5 +1,5 @@
 defmodule PhxApp.Accounts.User do
-  use Ecto.Schema
+  use PhxApp.Schema
   import Ecto.Changeset
   alias PhxApp.Blog.Article
 
