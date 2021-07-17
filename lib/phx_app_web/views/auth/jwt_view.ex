@@ -8,7 +8,7 @@ defmodule PhxAppWeb.Auth.JwtView do
   def render("error.json", %{message: msg}) do
     %{
       statusCode: 401,
-      error: msg
+      message: msg
     }
   end
 end
