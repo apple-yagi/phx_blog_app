@@ -22,6 +22,24 @@ defmodule PhxAppWeb.Api.V1.UserControllerTest do
     end
   end
 
+  describe "show" do
+    setup [:create_user]
+
+    test "gets a single user", %{conn: conn, user: user} do
+      response = get(conn, Routes.user_path(conn, :show, user))
+      user_as_json = Jason.decode!(response.resp_body)
+
+      assert response.status == 200
+      assert user.id == user_as_json["id"]
+    end
+
+    test "not found user", %{conn: conn, user: user} do
+      response = get(conn, Routes.user_path(conn, :show, user.id + 1))
+
+      assert response.status == 404
+    end
+  end
+
   defp create_user(_) do
     user = fixture(:user)
     %{user: user}
