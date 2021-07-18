@@ -66,7 +66,7 @@ defmodule PhxAppWeb do
       # Import basic rendering functionality (render, render_layout, etc)
       import Phoenix.View
 
-      import PhxAppWeb.ErrorHelpers
+      import PhxAppWeb.Web.ErrorHelpers
       import PhxAppWeb.Gettext
       alias PhxAppWeb.Router.Helpers, as: Routes
     end

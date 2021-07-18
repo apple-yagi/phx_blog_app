@@ -1,4 +1,4 @@
-defmodule PhxAppWeb.ChangesetView do
+defmodule PhxAppWeb.Web.ChangesetView do
   use PhxAppWeb, :view
 
   @doc """

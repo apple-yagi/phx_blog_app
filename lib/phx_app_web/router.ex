@@ -21,29 +21,25 @@ defmodule PhxAppWeb.Router do
     plug Guardian.Plug.EnsureAuthenticated
   end
 
-  scope "/", PhxAppWeb do
+  scope "/", PhxAppWeb.Web do
     pipe_through :browser
 
     get "/", PageController, :index
-  end
-
-  scope "/", PhxAppWeb do
-    pipe_through :browser
-
-    resources "/articles", ArticleController
   end
 
   scope "/api/v1", PhxAppWeb.Api.V1 do
     pipe_through :api
 
     resources "/users", UserController, only: [:index, :show, :create]
+    resources "/articles", ArticleController, only: [:index, :show]
 
     pipe_through [:auth, :ensure_auth]
 
     resources "/users", UserController, only: [:update, :delete]
+    resources "/articles", ArticleController, only: [:create, :update, :delete]
   end
 
-  scope "/auth", PhxAppWeb.Auth do
+  scope "/api/auth", PhxAppWeb.Api.Auth do
     pipe_through :api
 
     post "/sign_in", JwtController, :sign_in

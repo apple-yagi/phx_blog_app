@@ -1,4 +1,4 @@
-defmodule PhxAppWeb.ErrorHelpers do
+defmodule PhxAppWeb.Web.ErrorHelpers do
   @moduledoc """
   Conveniences for translating and building error messages.
   """

@@ -1,4 +1,4 @@
-defmodule PhxAppWeb.Auth.JwtView do
+defmodule PhxAppWeb.Api.Auth.JwtView do
   use PhxAppWeb, :view
 
   def render("sign_in.json", %{user: _user, jwt: jwt}) do

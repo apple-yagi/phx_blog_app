@@ -1,4 +1,4 @@
-defmodule PhxAppWeb.FallbackController do
+defmodule PhxAppWeb.Web.FallbackController do
   @moduledoc """
   Translates controller action results into valid `Plug.Conn` responses.
 

@@ -135,14 +135,20 @@ defmodule PhxApp.Accounts do
     end
   end
 
-  def check_policy(user, current_user) do
-    if current_user == :not_found do
-      {:error, :not_found}
-    else
-      case user.id == current_user.id do
-        true -> :ok
-        false -> {:error, :not_found}
-      end
+  @spec check_policy(%User{}, %User{}) :: :ok | {:error, :forbidden}
+  def check_policy(user, current_user)
+      when is_struct(user, User) and is_struct(current_user, User) do
+    case user.id == current_user.id do
+      true -> :ok
+      false -> {:error, :forbidden}
+    end
+  end
+
+  @spec check_policy(String, String) :: :ok | {:errro, :forbidden}
+  def check_policy(id, user_id) when is_binary(id) and is_binary(user_id) do
+    case id == user_id do
+      true -> :ok
+      false -> {:error, :forbidden}
     end
   end
 end

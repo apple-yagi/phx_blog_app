@@ -14,7 +14,7 @@ defmodule PhxApp.Blog.Article do
   @doc false
   def changeset(article, attrs) do
     article
-    |> cast(attrs, [:title, :content])
-    |> validate_required([:title, :content])
+    |> cast(attrs, [:title, :content, :user_id])
+    |> validate_required([:title, :content, :user_id])
   end
 end

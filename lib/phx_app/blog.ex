@@ -6,6 +6,7 @@ defmodule PhxApp.Blog do
   import Ecto.Query, warn: false
   alias PhxApp.Repo
 
+  alias PhxApp.Accounts.User
   alias PhxApp.Blog.Article
 
   @doc """
@@ -22,6 +23,29 @@ defmodule PhxApp.Blog do
   end
 
   @doc """
+  Gets a single user.
+
+  ## Examples
+
+      iex> get_article(123)
+      {:ok, %Article{}}
+
+      iex> get_user(456)
+      {:error, :not_found}
+
+  """
+  def get_article(id) do
+    try do
+      article = Repo.get!(Article, id)
+      {:ok, article}
+    rescue
+      _e in Ecto.NoResultsError -> {:error, :not_found}
+      _e -> {:error, :internal_server_error}
+    end
+  end
+
+  @spec get_article!(any) :: any
+  @doc """
   Gets a single article.
 
   Raises `Ecto.NoResultsError` if the Article does not exist.
@@ -37,20 +61,25 @@ defmodule PhxApp.Blog do
   """
   def get_article!(id), do: Repo.get!(Article, id)
 
+  @spec create_article(
+          :invalid
+          | %{optional(:__struct__) => none, optional(atom | binary) => any},
+          %User{}
+        ) :: any
   @doc """
   Creates a article.
 
   ## Examples
 
-      iex> create_article(%{field: value})
+      iex> create_article(%{field: value})e
       {:ok, %Article{}}
 
       iex> create_article(%{field: bad_value})
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_article(attrs \\ %{}) do
-    %Article{}
+  def create_article(attrs \\ %{}, current_user) do
+    Ecto.build_assoc(current_user, :articles)
     |> Article.changeset(attrs)
     |> Repo.insert()
   end

@@ -1,4 +1,4 @@
-defmodule PhxAppWeb.Auth.JwtController do
+defmodule PhxAppWeb.Api.Auth.JwtController do
   use PhxAppWeb, :controller
   alias PhxApp.Accounts
   alias PhxApp.Auth.Guardian
