@@ -14,7 +14,7 @@ config :phx_app,
 config :phx_app, PhxAppWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "dlpvzV0p9Erxgu0mIBXuFu0cyLHlrOydv/T3+F9K769fwFqBF3fPnkOAjekOe/WO",
-  render_errors: [view: PhxAppWeb.ErrorView, accepts: ~w(html json), layout: false],
+  render_errors: [view: PhxAppWeb.Web.ErrorView, accepts: ~w(html json), layout: false],
   pubsub_server: PhxApp.PubSub,
   live_view: [signing_salt: "jIjMtTz+"]
 

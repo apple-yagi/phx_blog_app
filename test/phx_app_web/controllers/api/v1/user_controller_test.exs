@@ -16,7 +16,7 @@ defmodule PhxAppWeb.Api.V1.UserControllerTest do
     setup [:create_user]
 
     test "lists all users", %{conn: conn} do
-      response = get(conn, "/api/v1/users")
+      response = get(conn, Routes.user_path(conn, :index))
       users = Jason.decode!(response.resp_body)
 
       assert response.status == 200

@@ -5,8 +5,8 @@ defmodule PhxAppWeb.Web.FallbackController do
   See `Phoenix.Controller.action_fallback/1` for more details.
   """
   use PhxAppWeb, :controller
-  alias PhxAppWeb.ErrorView
-  alias PhxAppWeb.ChangesetView
+  alias PhxAppWeb.Web.ErrorView
+  alias PhxAppWeb.Web.ChangesetView
 
   # This clause handles errors returned by Ecto's insert/update/delete.
   def call(conn, {:error, %Ecto.Changeset{} = changeset}) do

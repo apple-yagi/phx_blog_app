@@ -1,4 +1,4 @@
-defmodule PhxAppWeb.LayoutViewTest do
+defmodule PhxAppWeb.Web.LayoutViewTest do
   use PhxAppWeb.ConnCase, async: true
 
   # When testing helpers, you may want to import Phoenix.HTML and

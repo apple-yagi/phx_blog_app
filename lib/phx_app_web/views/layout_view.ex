@@ -1,4 +1,4 @@
-defmodule PhxAppWeb.Web.LayoutView do
+defmodule PhxAppWeb.LayoutView do
   use PhxAppWeb, :view
   alias PhxApp.Auth.Guardian
 
