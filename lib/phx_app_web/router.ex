@@ -32,6 +32,7 @@ defmodule PhxAppWeb.Router do
 
     resources "/users", UserController, only: [:index, :show, :create]
     resources "/articles", ArticleController, only: [:index, :show]
+    resources "/tags", TagController, only: [:index, :show, :create, :update, :delete]
 
     pipe_through [:auth, :ensure_auth]
 

@@ -6,6 +6,7 @@ defmodule PhxApp.Repo.Migrations.CreateArticles do
       add :id, :uuid, primary_key: true
       add :title, :string, null: false
       add :content, :string
+      add :thumbnail_url, :string
       add :user_id, references(:users, type: :uuid, on_delete: :nothing), null: false
 
       timestamps()
