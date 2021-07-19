@@ -35,7 +35,7 @@ defmodule PhxApp.Accounts do
   """
   def get_user(id) do
     try do
-      user = Repo.get!(User, id)
+      user = Repo.get!(User, id) |> Repo.preload([:articles])
       {:ok, user}
     rescue
       _e in Ecto.NoResultsError -> {:error, :not_found}

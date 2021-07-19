@@ -36,7 +36,7 @@ defmodule PhxApp.Blog do
   """
   def get_article(id) do
     try do
-      article = Repo.get!(Article, id)
+      article = Repo.get!(Article, id) |> Repo.preload([:user])
       {:ok, article}
     rescue
       _e in Ecto.NoResultsError -> {:error, :not_found}

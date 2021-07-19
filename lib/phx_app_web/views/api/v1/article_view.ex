@@ -1,6 +1,7 @@
 defmodule PhxAppWeb.Api.V1.ArticleView do
   use PhxAppWeb, :view
   alias PhxAppWeb.Api.V1.ArticleView
+  alias PhxAppWeb.Api.V1.UserView
 
   def render("index.json", %{articles: articles}) do
     render_many(articles, ArticleView, "article.json")
@@ -8,6 +9,7 @@ defmodule PhxAppWeb.Api.V1.ArticleView do
 
   def render("show.json", %{article: article}) do
     render_one(article, ArticleView, "article.json")
+    |> Map.put_new(:user, render_one(article.user, UserView, "user.json"))
   end
 
   def render("article.json", %{article: article}) do
