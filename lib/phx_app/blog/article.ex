@@ -2,7 +2,7 @@ defmodule PhxApp.Blog.Article do
   use PhxApp.Schema
   import Ecto.Changeset
   alias PhxApp.Accounts.User
-  alias PhxApp.Accessories.Tag
+  alias PhxApp.Blog.Tag
 
   schema "articles" do
     field :content, :string

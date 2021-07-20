@@ -1,4 +1,4 @@
-defmodule PhxApp.Accessories.Tag do
+defmodule PhxApp.Blog.Tag do
   use PhxApp.Schema
   import Ecto.Changeset
   alias PhxApp.Blog.Article
