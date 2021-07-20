@@ -8,6 +8,7 @@ defmodule PhxApp.Blog do
 
   alias PhxApp.Accounts.User
   alias PhxApp.Blog.Article
+  alias PhxApp.Accessories
 
   @doc """
   Returns the list of articles.
@@ -36,7 +37,10 @@ defmodule PhxApp.Blog do
   """
   def get_article(id) do
     try do
-      article = Repo.get!(Article, id) |> Repo.preload([:user])
+      article =
+        Repo.get!(Article, id)
+        |> Repo.preload([:user, :tags])
+
       {:ok, article}
     rescue
       _e in Ecto.NoResultsError -> {:error, :not_found}
@@ -116,6 +120,25 @@ defmodule PhxApp.Blog do
   """
   def delete_article(%Article{} = article) do
     Repo.delete(article)
+  end
+
+  @doc """
+  Associate a tag.
+
+  ## Examples
+
+      iex> assoc_article_tag(article, tags)
+      {:ok, %Article{}}
+
+      iex> assoc_article_tag(article, tags)
+      {:error, %Ecto.Changeset{}}
+  """
+  def assoc_article_tags(%Article{} = article, tags) do
+    article
+    |> Repo.preload(:tags)
+    |> Ecto.Changeset.change()
+    |> Ecto.Changeset.put_assoc(:tags, tags |> Enum.map(&Accessories.get_tag!(&1)))
+    |> Repo.update()
   end
 
   @doc """
