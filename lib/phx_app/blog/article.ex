@@ -9,7 +9,7 @@ defmodule PhxApp.Blog.Article do
     field :title, :string
     field :thumbnail_url, :string
     belongs_to :user, User
-    many_to_many :tag, Tag, join_through: "articles_tags"
+    many_to_many :tags, Tag, join_through: "articles_tags"
 
     timestamps()
   end
