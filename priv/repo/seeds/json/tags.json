@@ -1,0 +1,150 @@
+[
+  {
+    "name": "JavaScript",
+    "icon_path": "https://cdn.svgporn.com/logos/javascript.svg"
+  },
+  {
+    "name": "TypeScript",
+    "icon_path": "https://cdn.svgporn.com/logos/typescript-icon.svg"
+  },
+  {
+    "name": "Phoenix",
+    "icon_path": "https://cdn.svgporn.com/logos/phoenix.svg"
+  },
+  {
+    "name": "Ruby",
+    "icon_path": "https://cdn.svgporn.com/logos/ruby.svg"
+  },
+  {
+    "name": "JRuby",
+    "icon_path": "https://cdn.svgporn.com/logos/jruby.svg"
+  },
+  {
+    "name": "Java",
+    "icon_path": "https://cdn.svgporn.com/logos/java.svg"
+  },
+  {
+    "name": "Scala",
+    "icon_path": "https://cdn.svgporn.com/logos/scala.svg"
+  },
+  {
+    "name": "Kotlin",
+    "icon_path": "https://cdn.svgporn.com/logos/kotlin.svg"
+  },
+  {
+    "name": "Python",
+    "icon_path": "https://cdn.svgporn.com/logos/python.svg"
+  },
+  {
+    "name": "Rust",
+    "icon_path": "https://cdn.svgporn.com/logos/rust.svg"
+  },
+  {
+    "name": "Swift",
+    "icon_path": "https://cdn.svgporn.com/logos/swift.svg"
+  },
+  {
+    "name": "Erlang",
+    "icon_path": "https://cdn.svgporn.com/logos/erlang.svg"
+  },
+  {
+    "name": "C#",
+    "icon_path": "https://cdn.svgporn.com/logos/c-sharp.svg"
+  },
+  {
+    "name": "PHP",
+    "icon_path": "https://cdn.svgporn.com/logos/php.svg"
+  },
+  {
+    "name": "Vue.js",
+    "icon_path": "https://cdn.svgporn.com/logos/vue.svg"
+  },
+  {
+    "name": "React",
+    "icon_path": "https://cdn.svgporn.com/logos/react.svg"
+  },
+  {
+    "name": "Preact",
+    "icon_path": "https://cdn.svgporn.com/logos/preact.svg"
+  },
+  {
+    "name": "Next.js",
+    "icon_path": "https://cdn.svgporn.com/logos/nextjs-icon.svg"
+  },
+  {
+    "name": "Nuxt.js",
+    "icon_path": "https://cdn.svgporn.com/logos/nuxt-icon.svg"
+  },
+  {
+    "name": "Svelte",
+    "icon_path": "https://cdn.svgporn.com/logos/svelte-icon.svg"
+  },
+  {
+    "name": "Vercel",
+    "icon_path": "https://cdn.svgporn.com/logos/vercel-icon.svg"
+  },
+  {
+    "name": "Laravel",
+    "icon_path": "https://cdn.svgporn.com/logos/laravel.svg"
+  },
+  {
+    "name": "Rails",
+    "icon_path": "https://cdn.svgporn.com/logos/rails.svg"
+  },
+  {
+    "name": "Django",
+    "icon_path": "https://cdn.svgporn.com/logos/django-icon.svg"
+  },
+  {
+    "name": "Play",
+    "icon_path": "https://cdn.svgporn.com/logos/play.svg"
+  },
+  {
+    "name": "Koa",
+    "icon_path": "https://cdn.svgporn.com/logos/koa.svg"
+  },
+  {
+    "name": "Go",
+    "icon_path": "https://cdn.svgporn.com/logos/gopher.svg"
+  },
+  {
+    "name": "Docker",
+    "icon_path": "https://cdn.svgporn.com/logos/docker-icon.svg"
+  },
+  {
+    "name": "Firebase",
+    "icon_path": "https://cdn.svgporn.com/logos/firebase.svg"
+  },
+  {
+    "name": "Github",
+    "icon_path": "https://cdn.svgporn.com/logos/github-octocat.svg"
+  },
+  {
+    "name": "Flask",
+    "icon_path": "https://cdn.svgporn.com/logos/flask.svg"
+  },
+  {
+    "name": "Express",
+    "icon_path": "https://cdn.svgporn.com/logos/express.svg"
+  },
+  {
+    "name": "Nest.js",
+    "icon_path": "https://cdn.svgporn.com/logos/nestjs.svg"
+  },
+  {
+    "name": "Fastify",
+    "icon_path": "https://cdn.svgporn.com/logos/fastify-icon.svg"
+  },
+  {
+    "name": "AWS",
+    "icon_path": "https://cdn.svgporn.com/logos/aws.svg"
+  },
+  {
+    "name": "GCP",
+    "icon_path": "https://cdn.svgporn.com/logos/google.svg"
+  },
+  {
+    "name": "Azure",
+    "icon_path": "https://cdn.svgporn.com/logos/azure-icon.svg"
+  }
+]

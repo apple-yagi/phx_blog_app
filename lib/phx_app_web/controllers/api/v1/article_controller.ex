@@ -31,7 +31,9 @@ defmodule PhxAppWeb.Api.V1.ArticleController do
     with {:ok, %Article{} = article} <-
            Blog.create_article(article_params, current_user),
          {:ok, %Article{} = article} <-
-           Blog.assoc_article_tags(article, tags_params) do
+           Blog.assoc_article_tags(article, tags_params),
+         {:ok, %Article{} = article} <-
+           Blog.get_article(article.id) do
       conn
       |> put_status(:created)
       |> render("show.json", article: article)
