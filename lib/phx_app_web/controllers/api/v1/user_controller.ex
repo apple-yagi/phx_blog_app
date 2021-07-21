@@ -1,32 +1,23 @@
 defmodule PhxAppWeb.Api.V1.UserController do
   use PhxAppWeb, :controller
 
+  alias PhxAppWeb.Helper.ActionHelper
   alias PhxApp.Accounts
   alias PhxApp.Accounts.User
 
   action_fallback PhxAppWeb.Api.Error.FallbackController
 
   def action(conn, _) do
-    current_user =
-      if Map.has_key?(conn.assigns, :current_user) do
-        elem(conn.assigns.current_user, 1)
-      else
-        nil
-      end
-
-    apply(__MODULE__, action_name(conn), [
-      conn,
-      conn.params,
-      current_user
-    ])
+    apply_args = ActionHelper.get_apply_args(conn)
+    apply(__MODULE__, action_name(conn), apply_args)
   end
 
-  def index(conn, _params, _) do
+  def index(conn, _params) do
     users = Accounts.list_users()
     render(conn, "index.json", users: users)
   end
 
-  def create(conn, %{"user" => user_params}, _) do
+  def create(conn, %{"user" => user_params}) do
     with {:ok, %User{} = user} <- Accounts.create_user(user_params) do
       conn
       |> put_status(:created)
@@ -34,7 +25,7 @@ defmodule PhxAppWeb.Api.V1.UserController do
     end
   end
 
-  def show(conn, %{"id" => id}, _) do
+  def show(conn, %{"id" => id}) do
     with {:ok, user} <- Accounts.get_user(id) do
       render(conn, "show.json", user: user)
     end

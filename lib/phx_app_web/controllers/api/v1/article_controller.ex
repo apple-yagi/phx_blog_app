@@ -1,6 +1,7 @@
 defmodule PhxAppWeb.Api.V1.ArticleController do
   use PhxAppWeb, :controller
 
+  alias PhxAppWeb.Helper.ActionHelper
   alias PhxApp.Accounts
   alias PhxApp.Blog
   alias PhxApp.Blog.Article
@@ -8,21 +9,11 @@ defmodule PhxAppWeb.Api.V1.ArticleController do
   action_fallback PhxAppWeb.Api.Error.FallbackController
 
   def action(conn, _) do
-    current_user =
-      if Map.has_key?(conn.assigns, :current_user) do
-        elem(conn.assigns.current_user, 1)
-      else
-        nil
-      end
-
-    apply(__MODULE__, action_name(conn), [
-      conn,
-      conn.params,
-      current_user
-    ])
+    apply_args = ActionHelper.get_apply_args(conn)
+    apply(__MODULE__, action_name(conn), apply_args)
   end
 
-  def index(conn, _params, _) do
+  def index(conn, _params) do
     articles = Blog.list_articles()
     render(conn, "index.json", articles: articles)
   end
@@ -40,7 +31,7 @@ defmodule PhxAppWeb.Api.V1.ArticleController do
     end
   end
 
-  def show(conn, %{"id" => id}, _) do
+  def show(conn, %{"id" => id}) do
     with {:ok, article} <- Blog.get_article(id) do
       render(conn, "show.json", article: article)
     end
