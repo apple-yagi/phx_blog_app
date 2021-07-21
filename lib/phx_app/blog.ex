@@ -18,8 +18,15 @@ defmodule PhxApp.Blog do
       [%Article{}, ...]
 
   """
-  def list_articles do
-    Repo.all(Article)
+  def list_articles() do
+    query =
+      from a in PhxApp.Blog.Article,
+        join: u in assoc(a, :user),
+        join: t in assoc(a, :tags),
+        preload: [user: u, tags: t],
+        select: [:id, :title, :inserted_at, user: [:id, :name, :inserted_at]]
+
+    Repo.all(query)
   end
 
   @doc """

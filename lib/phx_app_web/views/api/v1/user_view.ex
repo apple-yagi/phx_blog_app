@@ -21,4 +21,12 @@ defmodule PhxAppWeb.Api.V1.UserView do
       updatedAt: user.updated_at
     }
   end
+
+  def render("list_user.json", %{user: user}) do
+    %{
+      id: user.id,
+      name: user.name,
+      createdAt: user.inserted_at
+    }
+  end
 end

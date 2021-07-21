@@ -5,7 +5,7 @@ defmodule PhxAppWeb.Api.V1.ArticleView do
   alias PhxAppWeb.Api.V1.TagView
 
   def render("index.json", %{articles: articles}) do
-    render_many(articles, ArticleView, "article.json")
+    render_many(articles, ArticleView, "list_article.json")
   end
 
   def render("show.json", %{article: article}) do
@@ -22,5 +22,15 @@ defmodule PhxAppWeb.Api.V1.ArticleView do
       createdAt: article.inserted_at,
       updatedAt: article.updated_at
     }
+  end
+
+  def render("list_article.json", %{article: article}) do
+    %{
+      id: article.id,
+      title: article.title,
+      createdAt: article.inserted_at
+    }
+    |> Map.put_new(:user, render_one(article.user, UserView, "list_user.json"))
+    |> Map.put_new(:tags, render_many(article.tags, TagView, "tag.json"))
   end
 end
