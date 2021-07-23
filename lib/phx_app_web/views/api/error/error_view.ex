@@ -15,7 +15,7 @@ defmodule PhxAppWeb.Api.Error.ErrorView do
     }
   end
 
-  def template_internal_server_error(_template, _assigns) do
+  def render("500.json", _assigns) do
     %{
       statusCode: 500,
       message: "Internal server error😇"
