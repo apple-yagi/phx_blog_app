@@ -24,7 +24,7 @@ defmodule PhxApp.Blog do
         join: u in assoc(a, :user),
         join: t in assoc(a, :tags),
         preload: [user: u, tags: t],
-        select: [:id, :title, :inserted_at, user: [:id, :name, :inserted_at]]
+        select: [:id, :title, :thumbnail_url, :inserted_at, user: [:id, :name, :inserted_at]]
 
     Repo.all(query)
   end

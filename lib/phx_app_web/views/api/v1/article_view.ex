@@ -19,6 +19,7 @@ defmodule PhxAppWeb.Api.V1.ArticleView do
       id: article.id,
       title: article.title,
       content: article.content,
+      thumbnail_url: article.thumbnail_url,
       createdAt: article.inserted_at,
       updatedAt: article.updated_at
     }
@@ -28,6 +29,7 @@ defmodule PhxAppWeb.Api.V1.ArticleView do
     %{
       id: article.id,
       title: article.title,
+      thumbnail_url: article.thumbnail_url,
       createdAt: article.inserted_at
     }
     |> Map.put_new(:user, render_one(article.user, UserView, "list_user.json"))
