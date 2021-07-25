@@ -14,7 +14,7 @@ defmodule PhxApp.Blog do
 
   ## Examples
 
-      iex> list_articles()
+      iex> list_articles(limit \\ 20, offset \\ 0)
       [%Article{}, ...]
 
   """
