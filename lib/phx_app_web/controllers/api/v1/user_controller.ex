@@ -12,8 +12,8 @@ defmodule PhxAppWeb.Api.V1.UserController do
     apply(__MODULE__, action_name(conn), apply_args)
   end
 
-  def index(conn, _params) do
-    users = Accounts.list_users()
+  def index(conn, params) do
+    users = Accounts.list_users(params["limit"], params["offset"])
     render(conn, "index.json", users: users)
   end
 

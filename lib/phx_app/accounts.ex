@@ -13,12 +13,17 @@ defmodule PhxApp.Accounts do
 
   ## Examples
 
-      iex> list_users()
+      iex> list_users(limit \\ 20, offset \\ 0)
       [%User{}, ...]
 
   """
-  def list_users do
-    Repo.all(User)
+  def list_users(limit \\ 20, offset \\ 0) do
+    query =
+      from u in User,
+        limit: ^limit,
+        offset: ^offset
+
+    Repo.all(query)
   end
 
   @doc """
