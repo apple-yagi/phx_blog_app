@@ -13,8 +13,8 @@ defmodule PhxAppWeb.Api.V1.ArticleController do
     apply(__MODULE__, action_name(conn), apply_args)
   end
 
-  def index(conn, _params) do
-    articles = Blog.list_articles()
+  def index(conn, params) do
+    articles = Blog.list_articles(params["limit"], params["offset"])
     render(conn, "index.json", articles: articles)
   end
 

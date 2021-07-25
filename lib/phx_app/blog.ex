@@ -18,13 +18,12 @@ defmodule PhxApp.Blog do
       [%Article{}, ...]
 
   """
-  def list_articles() do
+  def list_articles(limit \\ 20, offset \\ 0) do
     query =
-      from a in PhxApp.Blog.Article,
-        join: u in assoc(a, :user),
-        join: t in assoc(a, :tags),
-        preload: [user: u, tags: t],
-        select: [:id, :title, :thumbnail_url, :inserted_at, user: [:id, :name, :inserted_at]]
+      from a in Article,
+        limit: ^limit,
+        offset: ^offset,
+        preload: [:user, :tags]
 
     Repo.all(query)
   end
