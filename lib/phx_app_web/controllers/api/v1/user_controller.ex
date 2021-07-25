@@ -21,7 +21,7 @@ defmodule PhxAppWeb.Api.V1.UserController do
     with {:ok, %User{} = user} <- Accounts.create_user(user_params) do
       conn
       |> put_status(:created)
-      |> render("show.json", user: user)
+      |> render("user.json", user: user)
     end
   end
 
@@ -35,7 +35,7 @@ defmodule PhxAppWeb.Api.V1.UserController do
     with {:ok, user} <- Accounts.get_user(id),
          :ok <- Accounts.check_policy(user, current_user),
          {:ok, %User{} = user} <- Accounts.update_user(user, update_params(user_params)) do
-      render(conn, "show.json", user: user)
+      render(conn, "user.json", user: user)
     end
   end
 
