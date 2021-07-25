@@ -17,6 +17,8 @@ db-create:
 	docker exec phx_web mix ecto.create
 db-migrate:
 	docker exec phx_web mix ecto.migrate
+db-seeds:
+	docker exec phx_web mix run priv/repo/seeds.exs
 deps-get:
 	docker compose run phx_web mix deps.get
 compile:
