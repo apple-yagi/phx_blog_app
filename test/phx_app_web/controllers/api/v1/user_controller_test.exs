@@ -3,9 +3,9 @@ defmodule PhxAppWeb.Api.V1.UserControllerTest do
 
   alias PhxApp.Accounts
 
-  @create_attrs %{email: "test@example.com", name: "Jone Doe", password: "password"}
-  @invalid_attrs %{email: nil, name: nil, password: nil}
-  @update_attrs %{email: "update@example.com", name: "Update Doe"}
+  @create_attrs %{name: "Jone Doe", password: "password"}
+  @invalid_attrs %{name: nil, password: nil}
+  @update_attrs %{name: "Update Doe"}
 
   def fixture(:user) do
     {:ok, user} = Accounts.create_user(@create_attrs)
@@ -50,7 +50,6 @@ defmodule PhxAppWeb.Api.V1.UserControllerTest do
 
       assert response.status == 201
       assert @create_attrs[:name] == user_as_json["name"]
-      assert @create_attrs[:email] == user_as_json["email"]
     end
 
     test "response error when data is invalid", %{conn: conn} do

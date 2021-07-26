@@ -4,8 +4,12 @@ defmodule PhxApp.Accounts.User do
   alias PhxApp.Blog.Article
 
   schema "users" do
-    field(:email, :string)
     field(:name, :string)
+
+    field(:photo_url, :string,
+      default: "https://d1d9yfqtve2e82.cloudfront.net/account_photo/beginner_dog.png"
+    )
+
     field(:password, :string)
 
     has_many(:articles, Article)
@@ -23,10 +27,10 @@ defmodule PhxApp.Accounts.User do
         ) :: Ecto.Changeset.t()
   def changeset(user, attrs) do
     user
-    |> cast(attrs, [:name, :email, :password])
-    |> validate_required([:name, :email, :password])
-    |> unique_constraint(:email)
-    |> validate_format(:email, ~r/\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i)
+    |> cast(attrs, [:name, :photo_url, :password])
+    |> validate_required([:name, :password])
+    |> unique_constraint(:name)
+    |> validate_length(:name, min: 4)
     |> validate_length(:password, min: 5)
     |> put_pass_hash()
   end

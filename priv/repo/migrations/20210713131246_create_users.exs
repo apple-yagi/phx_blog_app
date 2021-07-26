@@ -5,12 +5,12 @@ defmodule PhxApp.Repo.Migrations.CreateUsers do
     create table(:users, primary_key: false) do
       add :id, :uuid, primary_key: true
       add :name, :string, null: false
-      add :email, :string, null: false
+      add :photo_url, :string
       add :password, :string, null: false
 
       timestamps()
     end
 
-    create unique_index(:users, [:email])
+    create unique_index(:users, [:name])
   end
 end

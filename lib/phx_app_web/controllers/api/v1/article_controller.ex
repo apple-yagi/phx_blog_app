@@ -2,7 +2,7 @@ defmodule PhxAppWeb.Api.V1.ArticleController do
   use PhxAppWeb, :controller
 
   alias PhxAppWeb.Helper.ActionHelper
-  alias PhxApp.Accounts
+  alias PhxApp.Auth
   alias PhxApp.Blog
   alias PhxApp.Blog.Article
 
@@ -39,7 +39,7 @@ defmodule PhxAppWeb.Api.V1.ArticleController do
 
   def update(conn, %{"id" => id, "article" => article_params}, current_user) do
     with {:ok, article} <- Blog.get_article(id),
-         :ok <- Accounts.check_policy(article.user_id, current_user.id),
+         :ok <- Auth.check_policy(article.user_id, current_user.id),
          {:ok, %Article{} = article} <- Blog.update_article(article, article_params) do
       render(conn, "show.json", article: article)
     end
@@ -47,7 +47,7 @@ defmodule PhxAppWeb.Api.V1.ArticleController do
 
   def delete(conn, %{"id" => id}, current_user) do
     with {:ok, article} <- Blog.get_article(id),
-         :ok <- Accounts.check_policy(article.user_id, current_user.id),
+         :ok <- Auth.check_policy(article.user_id, current_user.id),
          {:ok, %Article{}} <- Blog.delete_article(article) do
       send_resp(conn, :no_content, "")
     end

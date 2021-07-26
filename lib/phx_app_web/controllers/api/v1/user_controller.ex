@@ -2,6 +2,7 @@ defmodule PhxAppWeb.Api.V1.UserController do
   use PhxAppWeb, :controller
 
   alias PhxAppWeb.Helper.ActionHelper
+  alias PhxApp.Auth
   alias PhxApp.Accounts
   alias PhxApp.Accounts.User
 
@@ -33,7 +34,7 @@ defmodule PhxAppWeb.Api.V1.UserController do
 
   def update(conn, %{"id" => id, "user" => user_params}, current_user) do
     with {:ok, user} <- Accounts.get_user(id),
-         :ok <- Accounts.check_policy(user, current_user),
+         :ok <- Auth.check_policy(user, current_user),
          {:ok, %User{} = user} <- Accounts.update_user(user, update_params(user_params)) do
       render(conn, "user.json", user: user)
     end
@@ -41,7 +42,7 @@ defmodule PhxAppWeb.Api.V1.UserController do
 
   def delete(conn, %{"id" => id}, current_user) do
     with {:ok, user} <- Accounts.get_user(id),
-         :ok <- Accounts.check_policy(user, current_user),
+         :ok <- Auth.check_policy(user, current_user),
          {:ok, %User{}} <- Accounts.delete_user(user) do
       send_resp(conn, :no_content, "")
     end

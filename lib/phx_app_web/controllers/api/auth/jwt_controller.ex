@@ -1,10 +1,10 @@
 defmodule PhxAppWeb.Api.Auth.JwtController do
   use PhxAppWeb, :controller
-  alias PhxApp.Accounts
+  alias PhxApp.Auth
   alias PhxApp.Auth.Guardian
 
-  def sign_in(conn, %{"user" => %{"email" => email, "password" => password}}) do
-    case Accounts.authenticate_user(email, password) do
+  def sign_in(conn, %{"user" => %{"name" => name, "password" => password}}) do
+    case Auth.authenticate_user(name, password) do
       {:ok, user} ->
         {:ok, jwt, _full_claims} = Guardian.encode_and_sign(user)
 

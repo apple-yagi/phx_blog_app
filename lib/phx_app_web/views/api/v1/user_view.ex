@@ -16,7 +16,7 @@ defmodule PhxAppWeb.Api.V1.UserView do
     %{
       id: user.id,
       name: user.name,
-      email: user.email,
+      photoURL: user.photo_url,
       createdAt: user.inserted_at,
       updatedAt: user.updated_at
     }
@@ -26,6 +26,7 @@ defmodule PhxAppWeb.Api.V1.UserView do
     %{
       id: user.id,
       name: user.name,
+      photoURL: user.photo_url,
       createdAt: user.inserted_at
     }
   end
