@@ -27,23 +27,24 @@ defmodule PhxAppWeb.Router do
     get "/", PageController, :index
   end
 
-  scope "/api/v1", PhxAppWeb.Api.V1 do
+  scope "/api", PhxAppWeb.Api do
     pipe_through :api
 
-    resources "/users", UserController, only: [:index, :show, :create]
-    resources "/articles", ArticleController, only: [:index, :show]
-    resources "/tags", TagController, only: [:index, :show]
+    scope "/auth", Auth do
+      post "/sign_in", JwtController, :sign_in
+    end
 
-    pipe_through [:auth, :ensure_auth]
+    scope "/v1", V1 do
+      resources "/users", UserController, only: [:index, :create]
+      get "/users/:name", UserController, :show
+      resources "/articles", ArticleController, only: [:index, :show]
+      resources "/tags", TagController, only: [:index, :show]
 
-    resources "/users", UserController, only: [:update, :delete]
-    resources "/articles", ArticleController, only: [:create, :update, :delete]
-  end
+      pipe_through [:auth, :ensure_auth]
 
-  scope "/api/auth", PhxAppWeb.Api.Auth do
-    pipe_through :api
-
-    post "/sign_in", JwtController, :sign_in
+      resources "/users", UserController, only: [:update, :delete]
+      resources "/articles", ArticleController, only: [:create, :update, :delete]
+    end
   end
 
   # Enables LiveDashboard only for development

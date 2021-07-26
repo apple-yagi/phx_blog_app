@@ -26,8 +26,8 @@ defmodule PhxAppWeb.Api.V1.UserController do
     end
   end
 
-  def show(conn, %{"id" => id}) do
-    with {:ok, user} <- Accounts.get_user(id) do
+  def show(conn, %{"name" => name}) do
+    with {:ok, user} <- Accounts.get_user_by_name(name) do
       render(conn, "show.json", user: user)
     end
   end
