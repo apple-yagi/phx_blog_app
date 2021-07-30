@@ -23,7 +23,8 @@ defmodule PhxApp.Blog do
       from a in Article,
         limit: ^limit,
         offset: ^offset,
-        preload: [:user, :tags]
+        preload: [:user, :tags],
+        order_by: [desc: :inserted_at]
 
     Repo.all(query)
   end
