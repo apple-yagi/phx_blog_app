@@ -2,6 +2,8 @@ init:
 	@make build
 	@make up
 	@make db-create
+	@make db-migrate
+	@make db-seeds
 build:
 	docker compose build
 up:
