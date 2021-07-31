@@ -37,7 +37,8 @@ defmodule PhxAppWeb.Router do
     scope "/v1", V1 do
       resources "/users", UserController, only: [:index, :create]
       get "/users/:name", UserController, :show
-      resources "/articles", ArticleController, only: [:index, :show]
+      resources "/articles", ArticleController, only: [:index]
+      get "/users/:username/articles/:id", ArticleController, :show
       resources "/tags", TagController, only: [:index, :show]
 
       pipe_through [:auth, :ensure_auth]

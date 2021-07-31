@@ -34,17 +34,19 @@ defmodule PhxApp.Blog do
 
   ## Examples
 
-      iex> get_article(123)
+      iex> get_article(%User{}, 123)
       {:ok, %Article{}}
 
-      iex> get_user(456)
+      iex> get_user(%{}, 456)
       {:error, :not_found}
 
   """
-  def get_article(id) do
+  def get_user_article(%User{id: user_id}, id) do
     try do
       article =
-        Repo.get!(Article, id)
+        Article
+        |> where([a], a.id == ^id and a.user_id == ^user_id)
+        |> Repo.one()
         |> Repo.preload([:user, :tags])
 
       {:ok, article}
