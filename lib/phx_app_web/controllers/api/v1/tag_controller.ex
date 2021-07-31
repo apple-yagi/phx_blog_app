@@ -16,20 +16,21 @@ defmodule PhxAppWeb.Api.V1.TagController do
     with {:ok, %Tag{} = tag} <- Blog.create_tag(tag_params) do
       conn
       |> put_status(:created)
-      |> render("show.json", tag: tag)
+      |> render("tag.json", tag: tag)
     end
   end
 
   def show(conn, %{"id" => id}) do
-    tag = Blog.get_tag!(id)
-    render(conn, "show.json", tag: tag)
+    with {:ok, tag} <- Blog.get_tag(id) do
+      render(conn, "show.json", tag: tag)
+    end
   end
 
   def update(conn, %{"id" => id, "tag" => tag_params}) do
     tag = Blog.get_tag!(id)
 
     with {:ok, %Tag{} = tag} <- Blog.update_tag(tag, tag_params) do
-      render(conn, "show.json", tag: tag)
+      render(conn, "tag.json", tag: tag)
     end
   end
 
