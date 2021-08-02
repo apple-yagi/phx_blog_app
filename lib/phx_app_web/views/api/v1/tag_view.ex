@@ -13,6 +13,6 @@ defmodule PhxAppWeb.Api.V1.TagView do
   end
 
   def render("tag.json", %{tag: tag}) do
-    %{id: tag.id, name: tag.name, icon_path: tag.icon_path}
+    %{id: tag.id, name: tag.name, displayName: tag.display_name, iconPath: tag.icon_path}
   end
 end
