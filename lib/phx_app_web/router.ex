@@ -39,7 +39,8 @@ defmodule PhxAppWeb.Router do
       get "/users/:name", UserController, :show
       resources "/articles", ArticleController, only: [:index]
       get "/users/:username/articles/:id", ArticleController, :show
-      resources "/tags", TagController, only: [:index, :show]
+      resources "/tags", TagController, only: [:index]
+      get "/tags/:name", TagController, :show
 
       pipe_through [:auth, :ensure_auth]
 
