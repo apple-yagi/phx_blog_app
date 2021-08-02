@@ -8,8 +8,8 @@ defmodule PhxApp.Repo.Seeds.TagSeeder do
   def seed do
     Repo.delete_all Tag
     @path
-    |> File.read!()
-    |> Jason.decode!()
+    |> File.read!
+    |> Jason.decode!
     |> Enum.map(&Blog.create_tag(&1))
   end
 end

@@ -10,4 +10,6 @@
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
 
+PhxApp.Repo.Seeds.UserSeeder.seed()
 PhxApp.Repo.Seeds.TagSeeder.seed()
+PhxApp.Repo.Seeds.ArticleSeeder.seed()
