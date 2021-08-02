@@ -1,150 +1,187 @@
 [
   {
-    "name": "JavaScript",
+    "name": "javascript",
+    "display_name": "JavaScript",
     "icon_path": "https://cdn.svgporn.com/logos/javascript.svg"
   },
   {
-    "name": "TypeScript",
+    "name": "typescript",
+    "display_name": "TypeScript",
     "icon_path": "https://cdn.svgporn.com/logos/typescript-icon.svg"
   },
   {
-    "name": "Phoenix",
+    "name": "phoenix",
+    "display_name": "Phoenix",
     "icon_path": "https://cdn.svgporn.com/logos/phoenix.svg"
   },
   {
-    "name": "Ruby",
+    "name": "ruby",
+    "display_name": "Ruby",
     "icon_path": "https://cdn.svgporn.com/logos/ruby.svg"
   },
   {
-    "name": "JRuby",
+    "name": "jruby",
+    "display_name": "JRuby",
     "icon_path": "https://cdn.svgporn.com/logos/jruby.svg"
   },
   {
-    "name": "Java",
+    "name": "java",
+    "display_name": "Java",
     "icon_path": "https://cdn.svgporn.com/logos/java.svg"
   },
   {
-    "name": "Scala",
+    "name": "scala",
+    "display_name": "Scala",
     "icon_path": "https://cdn.svgporn.com/logos/scala.svg"
   },
   {
-    "name": "Kotlin",
+    "name": "kotlin",
+    "display_name": "Kotlin",
     "icon_path": "https://cdn.svgporn.com/logos/kotlin.svg"
   },
   {
-    "name": "Python",
+    "name": "python",
+    "display_name": "Python",
     "icon_path": "https://cdn.svgporn.com/logos/python.svg"
   },
   {
-    "name": "Rust",
+    "name": "rust",
+    "display_name": "Rust",
     "icon_path": "https://cdn.svgporn.com/logos/rust.svg"
   },
   {
-    "name": "Swift",
+    "name": "swift",
+    "display_name": "Swift",
     "icon_path": "https://cdn.svgporn.com/logos/swift.svg"
   },
   {
-    "name": "Erlang",
+    "name": "erlang",
+    "display_name": "Erlang",
     "icon_path": "https://cdn.svgporn.com/logos/erlang.svg"
   },
   {
-    "name": "C#",
+    "name": "c-sharp",
+    "display_name": "C#",
     "icon_path": "https://cdn.svgporn.com/logos/c-sharp.svg"
   },
   {
-    "name": "PHP",
+    "name": "php",
+    "display_name": "PHP",
     "icon_path": "https://cdn.svgporn.com/logos/php.svg"
   },
   {
-    "name": "Vue.js",
+    "name": "vuejs",
+    "display_name": "Vue.js",
     "icon_path": "https://cdn.svgporn.com/logos/vue.svg"
   },
   {
-    "name": "React",
+    "name": "react",
+    "display_name": "React",
     "icon_path": "https://cdn.svgporn.com/logos/react.svg"
   },
   {
-    "name": "Preact",
+    "name": "preact",
+    "display_name": "Preact",
     "icon_path": "https://cdn.svgporn.com/logos/preact.svg"
   },
   {
-    "name": "Next.js",
+    "name": "nextjs",
+    "display_name": "Next.js",
     "icon_path": "https://cdn.svgporn.com/logos/nextjs-icon.svg"
   },
   {
-    "name": "Nuxt.js",
+    "name": "nuxtjs",
+    "display_name": "Nuxt.js",
     "icon_path": "https://cdn.svgporn.com/logos/nuxt-icon.svg"
   },
   {
-    "name": "Svelte",
+    "name": "svelte",
+    "display_name": "Svelte",
     "icon_path": "https://cdn.svgporn.com/logos/svelte-icon.svg"
   },
   {
-    "name": "Vercel",
+    "name": "vercel",
+    "display_name": "Vercel",
     "icon_path": "https://cdn.svgporn.com/logos/vercel-icon.svg"
   },
   {
-    "name": "Laravel",
+    "name": "laravel",
+    "display_name": "Laravel",
     "icon_path": "https://cdn.svgporn.com/logos/laravel.svg"
   },
   {
-    "name": "Rails",
+    "name": "rails",
+    "display_name": "Rails",
     "icon_path": "https://cdn.svgporn.com/logos/rails.svg"
   },
   {
-    "name": "Django",
+    "name": "django",
+    "display_name": "Django",
     "icon_path": "https://cdn.svgporn.com/logos/django-icon.svg"
   },
   {
-    "name": "Play",
+    "name": "play",
+    "display_name": "Play",
     "icon_path": "https://cdn.svgporn.com/logos/play.svg"
   },
   {
-    "name": "Koa",
+    "name": "koa",
+    "display_name": "Koa",
     "icon_path": "https://cdn.svgporn.com/logos/koa.svg"
   },
   {
-    "name": "Go",
+    "name": "go",
+    "display_name": "Go",
     "icon_path": "https://cdn.svgporn.com/logos/gopher.svg"
   },
   {
-    "name": "Docker",
+    "name": "docker",
+    "display_name": "Docker",
     "icon_path": "https://cdn.svgporn.com/logos/docker-icon.svg"
   },
   {
-    "name": "Firebase",
+    "name": "firebase",
+    "display_name": "Firebase",
     "icon_path": "https://cdn.svgporn.com/logos/firebase.svg"
   },
   {
-    "name": "Github",
+    "name": "github",
+    "display_name": "Github",
     "icon_path": "https://cdn.svgporn.com/logos/github-octocat.svg"
   },
   {
-    "name": "Flask",
+    "name": "flask",
+    "display_name": "Flask",
     "icon_path": "https://cdn.svgporn.com/logos/flask.svg"
   },
   {
-    "name": "Express",
+    "name": "express",
+    "display_name": "Express",
     "icon_path": "https://cdn.svgporn.com/logos/express.svg"
   },
   {
-    "name": "Nest.js",
+    "name": "nestjs",
+    "display_name": "Nest.js",
     "icon_path": "https://cdn.svgporn.com/logos/nestjs.svg"
   },
   {
-    "name": "Fastify",
+    "name": "fastify",
+    "display_name": "Fastify",
     "icon_path": "https://cdn.svgporn.com/logos/fastify-icon.svg"
   },
   {
-    "name": "AWS",
+    "name": "aws",
+    "display_name": "AWS",
     "icon_path": "https://cdn.svgporn.com/logos/aws.svg"
   },
   {
-    "name": "GCP",
+    "name": "gcp",
+    "display_name": "GCP",
     "icon_path": "https://cdn.svgporn.com/logos/google.svg"
   },
   {
-    "name": "Azure",
+    "name": "azure",
+    "display_name": "Azure",
     "icon_path": "https://cdn.svgporn.com/logos/azure-icon.svg"
   }
 ]

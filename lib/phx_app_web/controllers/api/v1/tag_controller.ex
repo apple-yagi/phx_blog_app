@@ -20,8 +20,8 @@ defmodule PhxAppWeb.Api.V1.TagController do
     end
   end
 
-  def show(conn, %{"id" => id}) do
-    with {:ok, tag} <- Blog.get_tag(id) do
+  def show(conn, %{"name" => name}) do
+    with {:ok, tag} <- Blog.get_tag_by_name(name) do
       render(conn, "show.json", tag: tag)
     end
   end

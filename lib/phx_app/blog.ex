@@ -196,6 +196,30 @@ defmodule PhxApp.Blog do
   def get_tag!(id), do: Repo.get!(Tag, id)
 
   @doc """
+  Gets a single tag.
+
+  ## Examples
+
+      iex> get_tag(123)
+      {:ok, %Tag{}}
+
+      iex> get_tag(456)
+      {:error, :not_found}
+  """
+  def get_tag_by_name(name) do
+    try do
+      tag =
+        Repo.get_by!(Tag, name: name)
+        |> Repo.preload([:articles, articles: :user, articles: :tags])
+
+      {:ok, tag}
+    rescue
+      _e in Ecto.NoResultsError -> {:error, :not_found}
+      _e -> {:error, :interval_server_error}
+    end
+  end
+
+  @doc """
   Creates a tag.
 
   ## Examples

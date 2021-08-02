@@ -83,7 +83,7 @@ defmodule PhxApp.Accounts do
       {:ok, user}
     rescue
       _e in Ecto.NoResultsError -> {:error, :not_found}
-      _e -> {:error, :internal_server_error}
+      _e -> {:error, :interval_server_error}
     end
   end
 
