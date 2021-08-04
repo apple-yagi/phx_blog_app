@@ -13,3 +13,4 @@
 PhxApp.Repo.Seeds.UserSeeder.seed()
 PhxApp.Repo.Seeds.TagSeeder.seed()
 PhxApp.Repo.Seeds.ArticleSeeder.seed()
+PhxApp.Repo.Seeds.ArticleTagSeeder.seed()
