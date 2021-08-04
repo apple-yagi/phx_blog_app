@@ -15,6 +15,10 @@ restart:
 	docker compose up -d
 up-db:
 	docker compose up -d phx_db
+db-setup:
+	@make db-create
+	@make db-migrate
+	@make db-seeds
 db-create:
 	docker exec phx_web mix ecto.create
 db-migrate:
