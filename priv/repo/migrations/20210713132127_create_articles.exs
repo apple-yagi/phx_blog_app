@@ -5,7 +5,7 @@ defmodule PhxApp.Repo.Migrations.CreateArticles do
     create table(:articles, primary_key: false) do
       add :id, :uuid, primary_key: true
       add :title, :string, null: false
-      add :content, :string
+      add :content, :text
       add :thumbnail_url, :string
       add :user_id, references(:users, type: :uuid, on_delete: :nothing), null: false
 
