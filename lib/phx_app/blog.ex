@@ -26,7 +26,9 @@ defmodule PhxApp.Blog do
         preload: [:user, :tags],
         order_by: [desc: :inserted_at]
 
-    Repo.all(query)
+    articles = Repo.all(query)
+    count = Repo.one(from a in Article, select: count(a.id))
+    {articles, count}
   end
 
   @doc """

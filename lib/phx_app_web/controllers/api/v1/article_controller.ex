@@ -14,8 +14,8 @@ defmodule PhxAppWeb.Api.V1.ArticleController do
   end
 
   def index(conn, params) do
-    articles = Blog.list_articles(params["limit"], params["offset"])
-    render(conn, "index.json", articles: articles)
+    {articles, count} = Blog.list_articles(params["limit"], params["offset"])
+    render(conn, "index.json", articles: articles, count: count)
   end
 
   def create(conn, %{"article" => article_params, "tags" => tags_params}, current_user) do
