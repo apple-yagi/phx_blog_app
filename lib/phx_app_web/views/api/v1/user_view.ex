@@ -9,7 +9,7 @@ defmodule PhxAppWeb.Api.V1.UserView do
 
   def render("show.json", %{user: user}) do
     render_one(user, UserView, "user.json")
-    |> Map.put_new(:articles, render_many(user.articles, ArticleView, "article.json"))
+    |> Map.put_new(:articles, render_many(user.articles, ArticleView, "show.json"))
   end
 
   def render("user.json", %{user: user}) do

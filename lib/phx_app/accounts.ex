@@ -78,7 +78,7 @@ defmodule PhxApp.Accounts do
     try do
       user =
         Repo.get_by!(User, name: name)
-        |> Repo.preload([:articles])
+        |> Repo.preload([:articles, articles: :user, articles: :tags])
 
       {:ok, user}
     rescue
